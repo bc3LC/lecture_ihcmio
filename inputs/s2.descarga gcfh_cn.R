@@ -31,13 +31,13 @@ for ( p in packages.needed) {
 path <- here()
 
 # Set working directory
-setwd(paste0(path))
+setwd(paste0(path, "/inputs"))
 
 # Delete the folder generated in previous runs (if it exists) 
-if(dir.exists(paste0(path, "/gcfh_cn"))){unlink("gcfh_cn", recursive = TRUE)}
+if(dir.exists(paste0(path, "/inputs/gcfh_cn"))){unlink("gcfh_cn", recursive = TRUE)}
 
 # Create gcfh_cn folder 
-dir.create(paste0(path, "/gcfh_cn"))
+dir.create(paste0(path, "/inputs/gcfh_cn"))
 
 # [] Download data from the Spanish Statistical Office ----
 
@@ -51,7 +51,7 @@ url <- "https://www.ine.es/daco/daco42/cne15/gcfhogares95_22.xlsx"
 destination <- paste0(file)
 
 # Set working directory
-setwd(paste0(path, "/gcfh_cn"))
+setwd(paste0(path, "/inputs/gcfh_cn"))
 
 # Download microdata
 download(url, destination,  mode = 'wb')

@@ -42,13 +42,13 @@ old_names <- c('GASTO', 'CANTIDAD')
 new_names <- c('EUR_HE', 'HQ')
 
 # Set working directory
-setwd(paste0(path, "/epf"))
+setwd(paste0(path, "/inputs/epf"))
 
 # Define year
 year = 2019
   
 # Set working directory
-setwd(paste0(path, "/epf/", year, "/CSV"))
+setwd(paste0(path, "/inputs/epf/", year, "/CSV"))
 
 # Load data by year
 for (f in 1:length(files_en)) {
@@ -455,7 +455,7 @@ for (a in coicop_codes) {
 # [] Load and process the GCFH data ---- 
 
 # Set working directory
-setwd(paste0(path, "/gcfh_cn"))
+setwd(paste0(path, "/inputs/gcfh_cn"))
 
 # Load data
 gcfh_cn <- loadWorkbook("gcfhogares95_22.xlsx")
@@ -492,7 +492,7 @@ data <- left_join(gcfh_epf_data, gcfh_cn_data, by = 'Descripcion') %>%
   mutate(RC = (ECH/CN)*100)
 
 # Set working directory
-setwd(paste0(path))
+setwd(paste0(path, "/inputs"))
 
 # Save results
 material_2.4 <- createWorkbook()

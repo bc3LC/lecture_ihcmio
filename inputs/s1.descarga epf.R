@@ -45,17 +45,20 @@ initial.year = 2019
 # Define final year
 final.year = 2019
 
+# Create folder for the EPF
+dir.create(paste0(path, "/inputs/epf"))
+
 # By year
 for (year in initial.year:final.year) {
   
   # Set working directory
-  setwd(paste0(path, "/epf"))
+  setwd(paste0(path, "/inputs"))
   
   # Delete the folder generated in previous runs (if it exists) 
-  if(dir.exists(paste0(path, "/epf/", year))){unlink(paste0(year), recursive = TRUE)}
+  if(dir.exists(paste0(path, "/inputs/epf/", year))){unlink(paste0(year), recursive = TRUE)}
 
   # Create epf folder 
-  dir.create(paste0(path, "/epf/", year))
+  dir.create(paste0(path, "/inputs/epf/", year))
 
   # Define zip file
   eval(parse(text = paste0("file = 'datos_", year, ".zip'")))
@@ -67,7 +70,7 @@ for (year in initial.year:final.year) {
   destination <- paste0(file)
   
   # Set working directory
-  setwd(paste0(path, "/epf/", year))
+  setwd(paste0(path, "/inputs/epf/", year))
   
   # Download microdata
   download(url, destination,  mode = 'wb')
