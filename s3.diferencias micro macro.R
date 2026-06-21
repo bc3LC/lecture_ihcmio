@@ -494,6 +494,12 @@ data <- left_join(gcfh_epf_data, gcfh_cn_data, by = 'Descripcion') %>%
   mutate(RC = (ECH/CN)*100)
 
 # Set working directory
+setwd(paste0(path))
+
+# Create folder for the EPF
+dir.create(paste0(path, "/outputs"), recursive = TRUE, showWarnings = FALSE)
+
+# Set working directory
 setwd(paste0(path, "/outputs"))
 
 # [] Create RC plot ----
